@@ -20,28 +20,37 @@ public class Response {
         return status;
     }
 
-    public void setStatus(Integer status) {
+    public Response setStatus(Integer status) {
         this.status = status;
+        return this;
     }
 
     public Map<String, String> getHeaders() {
         return headers;
     }
 
+    public Response addHeader(String header, String value) {
+        this.getHeaders().put(header, value);
+        return this;
+    }
+
     public IntoBody getBody() {
         return body;
     }
 
-    public void setBody(File body) {
+    public Response setBody(File body) {
         this.body = IntoBody.from(body);
+        return this;
     }
 
-    public void setBody(String body) {
+    public Response setBody(String body) {
         this.body = IntoBody.from(body);
+        return this;
     }
 
-    public void setBody(InputStream body) {
+    public Response setBody(InputStream body) {
         this.body = IntoBody.from(body);
+        return this;
     }
 
     @Override

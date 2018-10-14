@@ -164,12 +164,20 @@ public class Request {
         PUT,
         DELETE,
         HEAD,
-        OPTION
+        OPTION;
+
+        public static Method from(@Nonnull String value) {
+            return Method.valueOf(value.toUpperCase());
+        }
     }
 
     public enum Scheme {
         HTTP,
-        HTTPS
+        HTTPS;
+
+        public static Scheme from(@Nonnull String value) {
+            return Scheme.valueOf(value.toUpperCase());
+        }
     }
 
 }
