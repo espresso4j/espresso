@@ -1,13 +1,13 @@
-package io.github.espresso4j;
+package io.github.espresso4j.espresso;
 
-import io.github.espresso4j.internal.IoUtils;
+import io.github.espresso4j.espresso.internal.IoUtils;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
-interface IntoBody {
+public interface IntoBody {
 
-    void into(OutputStream outputStream) throws Exception;
+    void into(OutputStream outputStream) throws IOException;
 
     class StringBody implements IntoBody {
 
@@ -18,7 +18,7 @@ interface IntoBody {
         }
 
         @Override
-        public void into(OutputStream outputStream) throws Exception {
+        public void into(OutputStream outputStream) throws IOException {
             outputStream.write(body.getBytes(StandardCharsets.UTF_8));
         }
 
@@ -38,7 +38,7 @@ interface IntoBody {
         }
 
         @Override
-        public void into(OutputStream outputStream) throws Exception {
+        public void into(OutputStream outputStream) throws IOException {
             try (InputStream in = new BufferedInputStream(new FileInputStream(this.body))) {
                 IoUtils.copyStream(in, outputStream);
             }
@@ -60,7 +60,7 @@ interface IntoBody {
         }
 
         @Override
-        public void into(OutputStream outputStream) throws Exception {
+        public void into(OutputStream outputStream) throws IOException {
             try ( InputStream in = this.body ) {
                 IoUtils.copyStream(in, outputStream);
             }

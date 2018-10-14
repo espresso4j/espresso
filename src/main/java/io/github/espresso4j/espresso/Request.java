@@ -1,4 +1,4 @@
-package io.github.espresso4j;
+package io.github.espresso4j.espresso;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

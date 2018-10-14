@@ -1,4 +1,4 @@
-package io.github.espresso4j;
+package io.github.espresso4j.espresso;
 
 import java.io.File;
 import java.io.InputStream;

@@ -1,4 +1,4 @@
-package io.github.espresso4j.internal;
+package io.github.espresso4j.espresso.internal;
 
 import java.io.IOException;
 import java.io.InputStream;
