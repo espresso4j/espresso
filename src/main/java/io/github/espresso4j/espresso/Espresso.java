@@ -9,8 +9,7 @@ public interface Espresso {
 
     Response call(Request request);
 
-    default void call(Request request, Consumer<Response> sendResponse, Consumer<Exception> raiseException){
-        throw new UnsupportedOperationException("Async handler not implemented");
-    };
-
+    interface Async {
+        void call(Request request, Consumer<Response> sendResponse, Consumer<Exception> raiseException);
+    }
 }
