@@ -1,5 +1,6 @@
 package io.github.espresso4j.espresso;
 
+import javax.annotation.Nonnull;
 import java.io.File;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -15,6 +16,8 @@ public class Response {
     private Map<String, String> headers = new HashMap<>();
 
     private IntoBody body;
+
+    private Map<Class<? extends Espresso>, Object> extensions = new HashMap<>();
 
     public Integer getStatus() {
         return status;
@@ -53,12 +56,23 @@ public class Response {
         return this;
     }
 
+    @Nonnull
+    public Map<Class<? extends Espresso>, Object> getExtensions() {
+        return extensions;
+    }
+
+    public Response extension(Class<? extends Espresso> key, Object value) {
+        this.extensions.put(key, value);
+        return this;
+    }
+
     @Override
     public String toString() {
         return "Response{" +
                 "status=" + status +
                 ", headers=" + headers +
                 ", body=" + body +
+                ", extensions=" + extensions +
                 '}';
     }
 }

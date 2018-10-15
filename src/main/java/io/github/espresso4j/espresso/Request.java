@@ -140,6 +140,11 @@ public class Request {
         return extensions;
     }
 
+    public Request extension(Class<? extends Espresso> key, Object value) {
+        this.extensions.put(key, value);
+        return this;
+    }
+
     @Override
     public String toString() {
         return "Request{" +
