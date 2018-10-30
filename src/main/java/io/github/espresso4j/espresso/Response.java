@@ -4,6 +4,7 @@ import javax.annotation.Nonnull;
 import java.io.File;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -17,53 +18,73 @@ public class Response {
 
     private IntoBody body;
 
-    private Map<Class<? extends Espresso>, Object> extensions = new HashMap<>();
+    private Map<Class<?>, Object> extensions = new HashMap<>();
 
-    public Integer getStatus() {
+    public Integer status() {
         return status;
     }
 
-    public Response setStatus(Integer status) {
+    public Response status(Integer status) {
         this.status = status;
         return this;
     }
 
-    public Map<String, String> getHeaders() {
+    public Map<String, String> headers() {
         return headers;
     }
 
-    public Response addHeader(String header, String value) {
-        this.getHeaders().put(header, value);
+    public Response header(String header, String value) {
+        this.headers().put(header, value);
         return this;
     }
 
-    public IntoBody getBody() {
+    public IntoBody body() {
         return body;
     }
 
-    public Response setBody(File body) {
+    public Response body(File body) {
         this.body = IntoBody.from(body);
         return this;
     }
 
-    public Response setBody(String body) {
+    public Response body(String body) {
         this.body = IntoBody.from(body);
         return this;
     }
 
-    public Response setBody(InputStream body) {
+    public Response body(InputStream body) {
         this.body = IntoBody.from(body);
+        return this;
+    }
+
+    public Response body(Iterator<String> strs) {
+        this.body = IntoBody.from(strs);
+        return this;
+    }
+
+    public Response body(IntoBody intoBody) {
+        this.body = intoBody;
         return this;
     }
 
     @Nonnull
-    public Map<Class<? extends Espresso>, Object> getExtensions() {
+    public Map<Class<?>, Object> extensions() {
         return extensions;
     }
 
     public Response extension(Class<? extends Espresso> key, Object value) {
         this.extensions.put(key, value);
         return this;
+    }
+
+    /**
+     *
+     * @param status
+     * @return
+     */
+    public static Response of(int status) {
+        Response response = new Response();
+        return response.status(status);
     }
 
     @Override

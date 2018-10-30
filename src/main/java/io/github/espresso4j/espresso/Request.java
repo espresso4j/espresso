@@ -34,7 +34,7 @@ public class Request {
 
     private InputStream body;
 
-    private Map<Class<? extends Espresso>, Object> extensions = new HashMap<>();
+    private Map<Class<?>, Object> extensions = new HashMap<>();
 
     @Nonnull
     public Integer getServerPort() {
@@ -136,11 +136,11 @@ public class Request {
     }
 
     @Nonnull
-    public Map<Class<? extends Espresso>, Object> getExtensions() {
+    public Map<Class<?>, Object> extensions() {
         return extensions;
     }
 
-    public Request extension(Class<? extends Espresso> key, Object value) {
+    public Request extension(Class<?> key, Object value) {
         this.extensions.put(key, value);
         return this;
     }

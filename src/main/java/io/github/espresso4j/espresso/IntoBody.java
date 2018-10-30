@@ -4,6 +4,7 @@ import io.github.espresso4j.espresso.internal.IoUtils;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.util.Iterator;
 
 public interface IntoBody {
 
@@ -74,6 +75,28 @@ public interface IntoBody {
         }
     }
 
+    class StringIteratorBody implements IntoBody {
+        private Iterator<String> body;
+
+        StringIteratorBody(Iterator<String> iterator) {
+            this.body = iterator;
+        }
+
+        @Override
+        public void into(OutputStream outputStream) throws IOException {
+            while (body.hasNext()) {
+                outputStream.write(body.next().getBytes(StandardCharsets.UTF_8));
+            }
+        }
+
+        @Override
+        public String toString() {
+            return "StringIteratorBody{" +
+                    "body=" + body +
+                    '}';
+        }
+    }
+
     static IntoBody from(String s) {
         return new StringBody(s);
     }
@@ -86,5 +109,7 @@ public interface IntoBody {
         return new StreamBody(in);
     }
 
-
+    static IntoBody from(Iterator<String> strs) {
+        return new StringIteratorBody(strs);
+    }
 }
