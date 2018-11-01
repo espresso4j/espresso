@@ -6,13 +6,23 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.Iterator;
 
-public interface IntoBody {
+public interface IntoBody<T> {
+
+    T get();
 
     void into(OutputStream outputStream) throws IOException;
 
-    class StringBody implements IntoBody {
+    abstract class IntoBodyAdapter<T> implements IntoBody<T> {
+        T body;
 
-        private String body;
+        @Override
+        public T get() {
+            return body;
+        }
+
+    }
+
+    class StringBody extends IntoBodyAdapter<String> {
 
         StringBody(String body) {
             this.body = body;
@@ -31,9 +41,7 @@ public interface IntoBody {
         }
     }
 
-    class FileBody implements IntoBody {
-        private File body;
-
+    class FileBody extends IntoBodyAdapter<File> {
         FileBody(File body) {
             this.body = body;
         }
@@ -53,9 +61,7 @@ public interface IntoBody {
         }
     }
 
-    class StreamBody implements IntoBody {
-        private InputStream body;
-
+    class StreamBody extends IntoBodyAdapter<InputStream> {
         StreamBody(InputStream in) {
             this.body = in;
         }
@@ -75,9 +81,7 @@ public interface IntoBody {
         }
     }
 
-    class StringIteratorBody implements IntoBody {
-        private Iterator<String> body;
-
+    class StringIteratorBody extends IntoBodyAdapter<Iterator<String>> {
         StringIteratorBody(Iterator<String> iterator) {
             this.body = iterator;
         }

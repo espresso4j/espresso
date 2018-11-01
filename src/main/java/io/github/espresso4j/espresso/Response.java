@@ -62,7 +62,7 @@ public class Response {
         return this;
     }
 
-    public Response body(IntoBody intoBody) {
+    public <T> Response body(IntoBody<T> intoBody) {
         this.body = intoBody;
         return this;
     }
