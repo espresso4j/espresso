@@ -1,6 +1,5 @@
 package io.github.espresso4j.espresso;
 
-import javax.annotation.Nonnull;
 import java.io.File;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -8,11 +7,15 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
+ * The HTTP response object.
+ *
+ * A response object is consisted with HTTP status code, headers and an optional body.
+ * The response can also carry extensions from middlewares.
  *
  */
-public class Response {
+public class Response extends ExtensionHolder {
 
-    private Integer status;
+    private Integer status = 200;
 
     private Map<String, String> headers = new HashMap<>();
 
@@ -20,67 +23,117 @@ public class Response {
 
     private Map<Class<?>, Object> extensions = new HashMap<>();
 
+    /**
+     * Get to status code stored in this response
+     *
+     * @return the status code
+     */
     public Integer status() {
         return status;
     }
 
+    /**
+     * Set the status code.
+     *
+     * @param status the status code to set
+     * @return self
+     */
     public Response status(Integer status) {
         this.status = status;
         return this;
     }
 
+    /**
+     * Get the headers stored in this response
+     *
+     * @return map of headers
+     */
     public Map<String, String> headers() {
         return headers;
     }
 
+    /**
+     * Set header by key and value
+     *
+     * @param header the header name
+     * @param value the header value
+     * @return self
+     */
     public Response header(String header, String value) {
         this.headers().put(header, value);
         return this;
     }
 
+    /**
+     * Get the stored body
+     *
+     * @return the body wrapped as IntoBody type
+     */
     public IntoBody body() {
         return body;
     }
 
+    /**
+     * Set body using a java.io.File
+     *
+     * @param body the File
+     * @return self
+     */
     public Response body(File body) {
         this.body = IntoBody.from(body);
         return this;
     }
 
+    /**
+     * Set body as a string
+     *
+     * @param body the body string
+     * @return self
+     */
     public Response body(String body) {
         this.body = IntoBody.from(body);
         return this;
     }
 
+    /**
+     * Set body from an java.io.InputStream
+     *
+     * @param body the input stream
+     * @return self
+     */
     public Response body(InputStream body) {
         this.body = IntoBody.from(body);
         return this;
     }
 
+    /**
+     * Set body from a string iterator, each string within the iterator will be write into http body
+     *
+     * @param strs the string iterator
+     * @return self
+     */
     public Response body(Iterator<String> strs) {
         this.body = IntoBody.from(strs);
         return this;
     }
 
+    /**
+     * Set body to a IntoBody implementation
+     *
+     * @param intoBody the instance of IntoBody implementation
+     * @param <T> the actual inner type
+     * @return self
+     */
     public <T> Response body(IntoBody<T> intoBody) {
         this.body = intoBody;
         return this;
     }
 
-    @Nonnull
-    public Map<Class<?>, Object> extensions() {
-        return extensions;
-    }
-
-    public Response extension(Class<? extends Espresso> key, Object value) {
-        this.extensions.put(key, value);
-        return this;
-    }
-
     /**
+     * Build a response instance from a status code
      *
-     * @param status
-     * @return
+     * @param status the status code
+     * @return an empty response with the status code
      */
     public static Response of(int status) {
         Response response = new Response();
