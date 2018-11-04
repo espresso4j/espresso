@@ -1,4 +1,4 @@
-# espresso
+# Espresso
 
 [![Maven Central](https://img.shields.io/maven-central/v/io.github.espresso4j/espresso.svg)](https://search.maven.org/artifact/io.github.espresso4j/espresso)
 [![Javadocs](http://www.javadoc.io/badge/io.github.espresso4j/espresso.svg)](http://www.javadoc.io/doc/io.github.espresso4j/espresso)
@@ -9,14 +9,19 @@
 Web application from a function. The soul of modern Java web
 application.
 
+![image](https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=ab7082dc38626751767a3fd846a8919c&dpr=1&auto=format&fit=crop&w=500&q=80&cs=tinysrgb)
+
+[Original Image](https://unsplash.com/photos/IE-gdqEg45M)
+
 ## Rationale
 
-The idea of Espresso is inspired from Ring (Clojure), Iron (Rust) and
-WSGI (Python). Espresso defined a protocol between web
+Java is getting modern and the web ecosystem needs evolution, too. The
+idea of Espresso is inspired from Ring (Clojure), Iron (Rust) and WSGI
+(Python). Espresso defined a protocol between web
 application/framework and web server. It tries to replace Servlet API,
 which is heavy, verbose, complex and not friendly for unit-test.
 
-Key concept of espresso ecosystem:
+Key concepts of espresso ecosystem:
 
 * *App*: Espresso function implementation.
 * *Server*: A container to run espresso function.
@@ -48,7 +53,6 @@ your application is fully asynchronous:
 
 ```java
 
-// ...
 import io.github.espresso4j.espresso.*;
 
 // ...
