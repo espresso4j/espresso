@@ -11,7 +11,7 @@ import java.util.function.Consumer;
 @FunctionalInterface
 public interface Espresso {
 
-    Response call(Request request);
+    Response call(Request request) throws Exception;
 
     @FunctionalInterface
     interface Async {
