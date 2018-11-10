@@ -8,8 +8,9 @@ public class IoUtils {
 
     public static void copyStream(InputStream in, OutputStream out) throws IOException {
         byte[] buffer = new byte[4096];
-        while (in.read(buffer) > 0) {
-            out.write(buffer);
+        int size = 0;
+        while ((size = in.read(buffer)) > 0) {
+            out.write(buffer, 0 , size);
         }
     }
 
