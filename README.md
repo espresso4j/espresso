@@ -65,7 +65,8 @@ var app = (req, sender, raiser) ->
 
 * [Jettino](https://github.com/espresso4j/jettino) An espresso adapter
   for Jetty
-* [Latte](https://github.com/espresso4j/latte) An espresso url router
+* [Latte](https://github.com/espresso4j/latte) url router for Espresso
+* [Sugar](https://github.com/espresso4j/sugar) parameter extractor
 
 ## License
 
