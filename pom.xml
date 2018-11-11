@@ -5,7 +5,7 @@
 
   <groupId>io.github.espresso4j</groupId>
   <artifactId>espresso</artifactId>
-  <version>0.3.2-SNAPSHOT</version>
+  <version>0.3.2</version>
 
   <name>espresso</name>
   <url>https://github.com/espresso4j/espresso</url>
@@ -29,7 +29,7 @@
     <url>https://github.com/espresso4j/espresso</url>
     <connection>scm:git:git@github.com:espresso4j/espresso.git</connection>
     <developerConnection>scm:git:git@github.com:espresso4j/espresso.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>espresso-0.3.2</tag>
   </scm>
 
   <properties>
