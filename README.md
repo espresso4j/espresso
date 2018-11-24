@@ -4,6 +4,7 @@
 [![Javadocs](http://www.javadoc.io/badge/io.github.espresso4j/espresso.svg)](http://www.javadoc.io/doc/io.github.espresso4j/espresso)
 [![Travis (.org)](https://img.shields.io/travis/espresso4j/espresso.svg)](https://travis-ci.org/espresso4j/espresso)
 ![GitHub](https://img.shields.io/github/license/espresso4j/espresso.svg)
+[![Mailing-list](https://img.shields.io/badge/mailing--list-join-lightgrey.svg)](https://groups.io/g/espresso)
 [![Liberapay patrons](https://img.shields.io/liberapay/patrons/Sunng.svg)](https://liberapay.com/Sunng/donate)
 
 Web application from a function. The soul of modern Java web
@@ -67,6 +68,10 @@ var app = (req, sender, raiser) ->
   for Jetty
 * [Latte](https://github.com/espresso4j/latte) url router for Espresso
 * [Sugar](https://github.com/espresso4j/sugar) parameter extractor
+
+## Joining the community
+
+Joining our [mailing-list](https://groups.io/g/espresso).
 
 ## License
 
