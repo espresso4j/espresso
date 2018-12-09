@@ -1,10 +1,12 @@
 package io.github.espresso4j.espresso;
 
+import io.lacuna.bifurcan.IMap;
+import io.lacuna.bifurcan.LinearMap;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.io.InputStream;
 import java.security.cert.X509Certificate;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -30,7 +32,7 @@ public class Request extends ExtensionHolder {
 
     private X509Certificate sslClientCert;
 
-    private Map<String, String> headers = new HashMap<>();
+    private IMap<String, String> headers = new LinearMap<>();
 
     private InputStream body;
 
@@ -211,7 +213,7 @@ public class Request extends ExtensionHolder {
      * @return the header map
      */
     @Nonnull
-    public Map<String, String> getHeaders() {
+    public IMap<String, String> getHeaders() {
         return headers;
     }
 
@@ -221,7 +223,7 @@ public class Request extends ExtensionHolder {
      * @param headers the header map
      */
     public void setHeaders(@Nonnull Map<String, String> headers) {
-        this.headers = headers;
+        headers.forEach(this.headers::put);
     }
 
     /**

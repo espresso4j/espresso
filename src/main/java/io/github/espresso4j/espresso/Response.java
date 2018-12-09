@@ -1,10 +1,11 @@
 package io.github.espresso4j.espresso;
 
+import io.lacuna.bifurcan.IMap;
+import io.lacuna.bifurcan.LinearMap;
+
 import java.io.File;
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
 /**
  * The HTTP response object.
@@ -17,11 +18,9 @@ public class Response extends ExtensionHolder {
 
     private Integer status = 200;
 
-    private Map<String, String> headers = new HashMap<>();
+    private IMap<String, String> headers = new LinearMap<>();
 
     private IntoBody body;
-
-    private Map<Class<?>, Object> extensions = new HashMap<>();
 
     /**
      * Get to status code stored in this response
@@ -48,7 +47,7 @@ public class Response extends ExtensionHolder {
      *
      * @return map of headers
      */
-    public Map<String, String> headers() {
+    public IMap<String, String> headers() {
         return headers;
     }
 
@@ -146,7 +145,6 @@ public class Response extends ExtensionHolder {
                 "status=" + status +
                 ", headers=" + headers +
                 ", body=" + body +
-                ", extensions=" + extensions +
-                '}';
+                "} " + super.toString();
     }
 }

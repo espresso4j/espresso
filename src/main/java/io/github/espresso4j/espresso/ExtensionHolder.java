@@ -1,9 +1,10 @@
 package io.github.espresso4j.espresso;
 
+import io.lacuna.bifurcan.IMap;
+import io.lacuna.bifurcan.LinearMap;
+
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Holds some extension that middlewares write into.
@@ -12,7 +13,7 @@ import java.util.Map;
  */
 public class ExtensionHolder {
 
-    Map<Class<?>, Object> extensions = new HashMap<>();
+    IMap<Class<?>, Object> extensions = new LinearMap<>();
 
     /**
      * Get the stored extensions
@@ -20,7 +21,7 @@ public class ExtensionHolder {
      * @return the map of extensions
      */
     @Nonnull
-    public Map<Class<?>, Object> extensions() {
+    public IMap<Class<?>, Object> extensions() {
         return this.extensions;
     }
 
